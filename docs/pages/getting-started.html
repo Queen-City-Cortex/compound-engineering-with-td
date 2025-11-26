@@ -80,9 +80,7 @@
       <article class="docs-article">
         <h1>Getting Started with Compounding Engineering</h1>
         <p class="lead">
-          This guide will help you install, configure, and start using the Compounding Engineering plugin
-          for Claude Code. In about five minutes, you'll have access to 23 specialized agents, 16 commands,
-          11 skills, and two MCP servers.
+          Five minutes from now, you'll run a single command that spins up 10 AI agents—each with a different specialty—to review your pull request in parallel. Security, performance, architecture, accessibility, all happening at once. That's the plugin. Let's get you set up.
         </p>
 
         <!-- Installation Section -->
@@ -97,31 +95,30 @@
           </ul>
 
           <h3>Step 1: Add the Marketplace</h3>
-          <p>First, add the Every Marketplace to your Claude Code installation:</p>
+          <p>Think of the marketplace as an app store. You're adding it to Claude Code's list of places to look for plugins:</p>
           <div class="card-code-block">
             <pre><code>claude /plugin marketplace add https://github.com/EveryInc/every-marketplace</code></pre>
           </div>
 
           <h3>Step 2: Install the Plugin</h3>
-          <p>Install the compounding-engineering plugin from the marketplace:</p>
+          <p>Now grab the plugin itself:</p>
           <div class="card-code-block">
             <pre><code>claude /plugin install compounding-engineering</code></pre>
           </div>
 
           <h3>Step 3: Verify Installation</h3>
-          <p>Verify the plugin is installed correctly:</p>
+          <p>Check that it worked:</p>
           <div class="card-code-block">
             <pre><code>claude /plugin list</code></pre>
           </div>
-          <p>You should see <code>compounding-engineering</code> in the list of installed plugins.</p>
+          <p>You'll see <code>compounding-engineering</code> in the list. If you do, you're ready.</p>
 
           <div class="callout callout-info">
             <div class="callout-icon"><i class="fa-solid fa-circle-info"></i></div>
             <div class="callout-content">
               <h4>Known Issue: MCP Servers</h4>
               <p>
-                The bundled MCP servers (Playwright and Context7) may not load automatically.
-                See the <a href="#mcp-configuration">MCP Configuration</a> section for the workaround.
+                The bundled MCP servers (Playwright for browser automation, Context7 for docs) don't always auto-load. If you need them, there's a manual config step below. Otherwise, ignore this—everything else works fine.
               </p>
             </div>
           </div>
@@ -131,10 +128,10 @@
         <section id="quick-start">
           <h2><i class="fa-solid fa-rocket"></i> Quick Start</h2>
 
-          <p>Here are the most common ways to use the plugin:</p>
+          <p>Let's see what this thing can actually do. I'll show you three workflows you'll use constantly:</p>
 
           <h3>Run a Code Review</h3>
-          <p>The <code>/workflows:review</code> command runs a comprehensive code review using multiple agents in parallel:</p>
+          <p>This is the big one. Type <code>/workflows:review</code> and watch it spawn 10+ specialized reviewers:</p>
           <div class="card-code-block">
             <pre><code># Review a PR by number
 /workflows:review 123
@@ -147,7 +144,7 @@
           </div>
 
           <h3>Use a Specialized Agent</h3>
-          <p>Invoke agents directly for specific tasks:</p>
+          <p>Sometimes you just need one expert. Call them directly:</p>
           <div class="card-code-block">
             <pre><code># Rails code review with Kieran's conventions
 claude agent kieran-rails-reviewer "Review the UserController"
@@ -160,7 +157,7 @@ claude agent best-practices-researcher "Find pagination patterns for Rails"</cod
           </div>
 
           <h3>Invoke a Skill</h3>
-          <p>Skills provide domain expertise on demand:</p>
+          <p>Skills are like loading a reference book into Claude's brain. When you need deep knowledge in a specific domain:</p>
           <div class="card-code-block">
             <pre><code># Generate images with Gemini
 skill: gemini-imagegen
@@ -179,7 +176,7 @@ skill: create-agent-skills</code></pre>
 
           <h3 id="mcp-configuration">MCP Server Configuration</h3>
           <p>
-            If MCP servers don't auto-load, add them manually to your <code>.claude/settings.json</code>:
+            If the MCP servers didn't load automatically, paste this into <code>.claude/settings.json</code>:
           </p>
           <div class="card-code-block">
             <pre><code>{
@@ -199,7 +196,7 @@ skill: create-agent-skills</code></pre>
           </div>
 
           <h3>Environment Variables</h3>
-          <p>Some skills require environment variables:</p>
+          <p>Right now, only one skill needs an API key. If you use Gemini's image generation:</p>
           <table class="docs-table">
             <thead>
               <tr>
@@ -226,39 +223,35 @@ skill: create-agent-skills</code></pre>
             Every unit of engineering work should make subsequent units of work easier&mdash;not harder.
           </blockquote>
 
-          <p>This philosophy manifests in four key practices:</p>
+          <p>Here's how it works in practice—the four-step loop you'll run over and over:</p>
 
           <div class="philosophy-grid">
             <div class="philosophy-card">
               <div class="philosophy-icon"><i class="fa-solid fa-brain"></i></div>
-              <h4>Plan</h4>
+              <h4>1. Plan</h4>
               <p>
-                Understand the change needed and its impact before writing code.
-                Use research agents to gather context, best practices, and examples.
+                Before you write a single line, figure out what you're building and why. Use research agents to gather examples, patterns, and context. Think of it as Google Search meets expert consultation.
               </p>
             </div>
             <div class="philosophy-card">
               <div class="philosophy-icon"><i class="fa-solid fa-robot"></i></div>
-              <h4>Delegate</h4>
+              <h4>2. Delegate</h4>
               <p>
-                Use specialized AI agents to help with implementation.
-                Each agent brings deep expertise in its domain.
+                Now build it—with help. Each agent specializes in something (Rails, security, design). You stay in the driver's seat, but you've got a team of specialists riding shotgun.
               </p>
             </div>
             <div class="philosophy-card">
               <div class="philosophy-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-              <h4>Assess</h4>
+              <h4>3. Assess</h4>
               <p>
-                Run comprehensive reviews with multiple perspectives.
-                Security, performance, architecture&mdash;all covered by specialized agents.
+                Before you ship, run the gauntlet. Security agent checks for vulnerabilities. Performance agent flags N+1 queries. Architecture agent questions your design choices. All at once, all in parallel.
               </p>
             </div>
             <div class="philosophy-card">
               <div class="philosophy-icon"><i class="fa-solid fa-book"></i></div>
-              <h4>Codify</h4>
+              <h4>4. Codify</h4>
               <p>
-                Document learnings and patterns for future use.
-                Each solved problem becomes reusable knowledge.
+                You just solved a problem. Write it down. Next time you (or your teammate) face this, you'll have a runbook. That's the "compounding" part—each solution makes the next one faster.
               </p>
             </div>
           </div>
@@ -269,8 +262,7 @@ skill: create-agent-skills</code></pre>
           <h2><i class="fa-solid fa-users-gear"></i> Using Agents</h2>
 
           <p>
-            Agents are specialized personas that can be invoked to perform specific tasks.
-            They're designed to bring deep expertise in their domain.
+            Think of agents as coworkers with different job titles. You wouldn't ask your security engineer to design your UI, right? Same concept here—each agent has a specialty, and you call the one you need.
           </p>
 
           <h3>Invoking Agents</h3>
@@ -334,8 +326,7 @@ claude agent git-history-analyzer "Show changes to user model"</code></pre>
           <h2><i class="fa-solid fa-terminal"></i> Using Commands</h2>
 
           <p>
-            Slash commands automate complex multi-step workflows. They orchestrate
-            multiple agents, tools, and processes into a single command.
+            Commands are macros that run entire workflows for you. One command can spin up a dozen agents, coordinate their work, collect results, and hand you a summary. It's automation all the way down.
           </p>
 
           <h3>Running Commands</h3>
@@ -353,14 +344,14 @@ claude agent git-history-analyzer "Show changes to user model"</code></pre>
           </div>
 
           <h3>The Review Workflow</h3>
-          <p>The <code>/workflows:review</code> command is the most comprehensive. It:</p>
+          <p>Let me show you what happens when you run <code>/workflows:review</code>. Here's the sequence:</p>
           <ol>
-            <li>Detects the review target (PR, branch, or current changes)</li>
-            <li>Sets up a git worktree for isolated analysis</li>
-            <li>Runs 10 or more review agents in parallel</li>
-            <li>Synthesizes findings by severity (P1/P2/P3)</li>
-            <li>Creates structured todo files for each finding</li>
-            <li>Generates a summary report</li>
+            <li><strong>Detection</strong> - Figures out what you want reviewed (PR number, branch name, or current changes)</li>
+            <li><strong>Isolation</strong> - Spins up a git worktree so the review doesn't mess with your working directory</li>
+            <li><strong>Parallel execution</strong> - Launches 10+ agents simultaneously (security, performance, architecture, accessibility...)</li>
+            <li><strong>Synthesis</strong> - Sorts findings by severity (P1 = blocks merge, P2 = should fix, P3 = nice-to-have)</li>
+            <li><strong>Persistence</strong> - Creates todo files so you don't lose track of issues</li>
+            <li><strong>Summary</strong> - Hands you a readable report with action items</li>
           </ol>
 
           <p>
@@ -375,9 +366,7 @@ claude agent git-history-analyzer "Show changes to user model"</code></pre>
           <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Using Skills</h2>
 
           <p>
-            Skills provide domain expertise that Claude Code can invoke on-demand.
-            Unlike agents (which are personas), skills are bodies of knowledge with
-            templates, references, and workflows.
+            Here's the difference: agents are <em>who</em> does the work, skills are <em>what they know</em>. When you invoke a skill, you're loading a reference library into Claude's context—patterns, templates, examples, workflows. It's like handing Claude a technical manual.
           </p>
 
           <h3>Invoking Skills</h3>
@@ -390,13 +379,13 @@ skill: gemini-imagegen
           </div>
 
           <h3>Skill Structure</h3>
-          <p>Skills typically contain:</p>
+          <p>Peek inside a skill directory and you'll usually find:</p>
           <ul>
-            <li><strong>SKILL.md</strong> - Main documentation and instructions</li>
-            <li><strong>references/</strong> - Supporting documentation</li>
-            <li><strong>templates/</strong> - Code templates and patterns</li>
-            <li><strong>workflows/</strong> - Step-by-step procedures</li>
-            <li><strong>scripts/</strong> - Executable scripts (if needed)</li>
+            <li><strong>SKILL.md</strong> - The main instructions (what Claude reads first)</li>
+            <li><strong>references/</strong> - Deep dives on concepts and patterns</li>
+            <li><strong>templates/</strong> - Copy-paste code snippets</li>
+            <li><strong>workflows/</strong> - Step-by-step "how to" guides</li>
+            <li><strong>scripts/</strong> - Actual executable code (when words aren't enough)</li>
           </ul>
 
           <p>
@@ -411,8 +400,7 @@ skill: gemini-imagegen
           <h2><i class="fa-solid fa-code-pull-request"></i> Code Review Workflow Guide</h2>
 
           <p>
-            The code review workflow is the heart of Compounding Engineering.
-            Here's how to get the most out of it.
+            You'll spend most of your time here. This workflow is why the plugin exists—to turn code review from a bottleneck into a superpower.
           </p>
 
           <h3>Basic Review</h3>
@@ -425,15 +413,15 @@ skill: gemini-imagegen
           </div>
 
           <h3>Understanding Findings</h3>
-          <p>Findings are categorized by severity:</p>
+          <p>Every finding gets a priority label. Here's what they mean:</p>
           <ul>
-            <li><span class="badge badge-critical">P1 Critical</span> - Blocks merge. Security vulnerabilities, data corruption risks, breaking changes.</li>
-            <li><span class="badge badge-important">P2 Important</span> - Should fix. Performance issues, architectural concerns, reliability problems.</li>
-            <li><span class="badge badge-nice">P3 Nice-to-Have</span> - Enhancements. Minor improvements, cleanup, documentation.</li>
+            <li><span class="badge badge-critical">P1 Critical</span> - Don't merge until this is fixed. Think: SQL injection, data loss, crashes in production.</li>
+            <li><span class="badge badge-important">P2 Important</span> - Fix before shipping. Performance regressions, N+1 queries, shaky architecture.</li>
+            <li><span class="badge badge-nice">P3 Nice-to-Have</span> - Would be better, but ship without it if you need to. Documentation, minor cleanup, style issues.</li>
           </ul>
 
           <h3>Working with Todo Files</h3>
-          <p>Review findings are stored as todo files in the <code>todos/</code> directory:</p>
+          <p>After a review, you'll have a <code>todos/</code> directory full of markdown files. Each one is a single issue to fix:</p>
           <div class="card-code-block">
             <pre><code># List all pending todos
 ls todos/*-pending-*.md
@@ -451,8 +439,7 @@ ls todos/*-pending-*.md
           <h2><i class="fa-solid fa-plus"></i> Creating Custom Agents</h2>
 
           <p>
-            You can create custom agents tailored to your team's needs.
-            Agents are defined as markdown files with YAML frontmatter.
+            The built-in agents cover a lot of ground, but every team has unique needs. Maybe you want a "rails-api-reviewer" that enforces your company's API standards. That's 10 minutes of work.
           </p>
 
           <h3>Agent File Structure</h3>
@@ -476,19 +463,18 @@ You are [role description].
           </div>
 
           <h3>Agent Location</h3>
-          <p>Place custom agents in:</p>
+          <p>Drop your agent file in one of these directories:</p>
           <ul>
-            <li><code>.claude/agents/</code> - Project-specific agents</li>
-            <li><code>~/.claude/agents/</code> - User-wide agents</li>
+            <li><code>.claude/agents/</code> - Just for this project (committed to git)</li>
+            <li><code>~/.claude/agents/</code> - Available in all your projects (stays on your machine)</li>
           </ul>
 
           <div class="callout callout-tip">
             <div class="callout-icon"><i class="fa-solid fa-lightbulb"></i></div>
             <div class="callout-content">
-              <h4>Use the Command</h4>
+              <h4>The Easy Way</h4>
               <p>
-                The easiest way to create agents is with the <code>/create-agent-skill</code> command
-                or the <code>create-agent-skills</code> skill.
+                Don't write the YAML by hand. Just run <code>/create-agent-skill</code> and answer a few questions. The command generates the file, validates the format, and puts it in the right place.
               </p>
             </div>
           </div>
@@ -499,8 +485,7 @@ You are [role description].
           <h2><i class="fa-solid fa-plus"></i> Creating Custom Skills</h2>
 
           <p>
-            Skills are more complex than agents. They can include references,
-            templates, workflows, and scripts.
+            Skills are heavier than agents—they're knowledge bases, not just prompts. You're building a mini library that Claude can reference. Worth the effort for things you do repeatedly.
           </p>
 
           <h3>Skill Directory Structure</h3>
@@ -542,10 +527,9 @@ Use templates from the `templates/` directory.</code></pre>
           <div class="callout callout-tip">
             <div class="callout-icon"><i class="fa-solid fa-lightbulb"></i></div>
             <div class="callout-content">
-              <h4>Expert Guidance</h4>
+              <h4>Get Help Building Skills</h4>
               <p>
-                Use <code>skill: create-agent-skills</code> for comprehensive guidance
-                on creating effective skills, including best practices and validation.
+                Type <code>skill: create-agent-skills</code> and Claude loads expert guidance on skill architecture, best practices, file organization, and validation. It's like having a senior engineer walk you through it.
               </p>
             </div>
           </div>

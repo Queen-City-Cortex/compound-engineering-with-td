@@ -72,21 +72,20 @@
       <article class="docs-article">
         <h1><i class="fa-solid fa-terminal color-accent"></i> Command Reference</h1>
         <p class="lead">
-          Complete documentation for all 16 slash commands. Commands automate complex multi-step workflows
-          by orchestrating multiple agents, tools, and processes.
+          Here's the thing about slash commands: they're workflows you'd spend 20 minutes doing manually, compressed into one line. Type <code>/workflows:plan</code> and watch three agents launch in parallel to research your codebase while you grab coffee. That's the point—automation that actually saves time, not busywork dressed up as productivity.
         </p>
 
         <!-- Workflow Commands -->
         <section id="workflow-commands">
           <h2><i class="fa-solid fa-arrows-spin"></i> Workflow Commands (four)</h2>
-          <p>Core workflow commands that embody the Plan-Delegate-Assess-Codify philosophy.</p>
+          <p>These are the big four: Plan your feature, Review your code, Work through the implementation, and Codify what you learned. Every professional developer does this cycle—these commands just make you faster at it.</p>
 
           <div class="command-detail" id="workflows-plan">
             <div class="command-detail-header">
               <code class="command-detail-name">/workflows:plan</code>
             </div>
             <p class="command-detail-description">
-              Transform feature descriptions into well-structured project plans following conventions.
+              You've got a feature request and a blank page. This command turns "we need OAuth" into a structured plan that actually tells you what to build—researched, reviewed, and ready to execute.
             </p>
             <h4>Arguments</h4>
             <p><code>[feature description, bug report, or improvement idea]</code></p>
@@ -127,7 +126,7 @@
               <code class="command-detail-name">/workflows:review</code>
             </div>
             <p class="command-detail-description">
-              Perform exhaustive code reviews using multi-agent analysis, ultra-thinking, and worktrees.
+              Twelve specialized reviewers examine your PR in parallel—security, performance, architecture, patterns. It's like code review by committee, except the committee finishes in two minutes instead of two days.
             </p>
             <h4>Arguments</h4>
             <p><code>[PR number, GitHub URL, branch name, or "latest"]</code></p>
@@ -167,7 +166,7 @@
               <code class="command-detail-name">/workflows:work</code>
             </div>
             <p class="command-detail-description">
-              Execute work plans efficiently while maintaining quality and finishing features.
+              Point this at a plan file and watch it execute—reading requirements, setting up environment, running tests, creating commits, opening PRs. It's the "just build the thing" button you wish you always had.
             </p>
             <h4>Arguments</h4>
             <p><code>[plan file, specification, or todo file path]</code></p>
@@ -214,7 +213,7 @@
               <code class="command-detail-name">/workflows:codify</code>
             </div>
             <p class="command-detail-description">
-              Document a recently solved problem for the knowledge base.
+              Just fixed a gnarly bug? This captures the solution before you forget it. Seven agents analyze what you did, why it worked, and how to prevent it next time. Your future self will thank you.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: brief context about the fix]</code></p>
@@ -246,14 +245,14 @@
         <!-- Utility Commands -->
         <section id="utility-commands">
           <h2><i class="fa-solid fa-wrench"></i> Utility Commands (12)</h2>
-          <p>Specialized commands for specific tasks like changelog generation, bug reporting, and parallel resolution.</p>
+          <p>The supporting cast—commands that do one specific thing really well. Generate changelogs, resolve todos in parallel, triage findings, create new commands. The utilities you reach for daily.</p>
 
           <div class="command-detail" id="changelog">
             <div class="command-detail-header">
               <code class="command-detail-name">/changelog</code>
             </div>
             <p class="command-detail-description">
-              Create engaging changelogs for recent merges to main branch.
+              Turn your git history into a changelog people actually want to read. Breaking changes at the top, fun facts at the bottom, everything organized by what matters to your users.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: daily|weekly, or time period in days]</code></p>
@@ -278,7 +277,7 @@
               <code class="command-detail-name">/create-agent-skill</code>
             </div>
             <p class="command-detail-description">
-              Create or edit Claude Code skills with expert guidance on structure and best practices.
+              Need a new skill? This walks you through creating one that actually works—proper frontmatter, clear documentation, all the conventions baked in. Think of it as scaffolding for skills.
             </p>
             <h4>Arguments</h4>
             <p><code>[skill description or requirements]</code></p>
@@ -293,7 +292,7 @@
               <code class="command-detail-name">/generate_command</code>
             </div>
             <p class="command-detail-description">
-              Create a new custom slash command following conventions and best practices.
+              Same idea, but for commands instead of skills. Tell it what workflow you're tired of doing manually, and it generates a proper slash command with all the right patterns.
             </p>
             <h4>Arguments</h4>
             <p><code>[command purpose and requirements]</code></p>
@@ -308,7 +307,7 @@
               <code class="command-detail-name">/heal-skill</code>
             </div>
             <p class="command-detail-description">
-              Heal skill documentation by applying corrections discovered during execution.
+              Skills drift—APIs change, URLs break, parameters get renamed. When a skill stops working, this figures out what's wrong and fixes the documentation. You approve the changes before anything commits.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: specific issue to fix]</code></p>
@@ -330,7 +329,7 @@
               <code class="command-detail-name">/plan_review</code>
             </div>
             <p class="command-detail-description">
-              Have multiple specialized agents review a plan in parallel.
+              Before you execute a plan, have three reviewers tear it apart—Rails conventions, best practices, simplicity. Better to find the problems in the plan than in production.
             </p>
             <h4>Arguments</h4>
             <p><code>[plan file path or plan content]</code></p>
@@ -350,7 +349,7 @@
               <code class="command-detail-name">/report-bug</code>
             </div>
             <p class="command-detail-description">
-              Report a bug in the compounding-engineering plugin.
+              Something broken? This collects all the context—what broke, what you expected, error messages, environment—and files a proper bug report. No more "it doesn't work" issues.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: brief description of the bug]</code></p>
@@ -374,7 +373,7 @@
               <code class="command-detail-name">/reproduce-bug</code>
             </div>
             <p class="command-detail-description">
-              Reproduce and investigate a bug using logs and console inspection.
+              Give it a GitHub issue number and it tries to actually reproduce the bug—reading the issue, analyzing code paths, iterating until it finds the root cause. Then it posts findings back to the issue.
             </p>
             <h4>Arguments</h4>
             <p><code>[GitHub issue number]</code></p>
@@ -396,7 +395,7 @@
               <code class="command-detail-name">/triage</code>
             </div>
             <p class="command-detail-description">
-              Triage and categorize findings for the CLI todo system.
+              Got a pile of code review findings or security audit results? This turns them into actionable todos—one at a time, you decide: create the todo, skip it, or modify and re-present.
             </p>
             <h4>Arguments</h4>
             <p><code>[findings list or source type]</code></p>
@@ -423,7 +422,7 @@
               <code class="command-detail-name">/resolve_parallel</code>
             </div>
             <p class="command-detail-description">
-              Resolve all TODO comments using parallel processing.
+              All those TODO comments scattered through your codebase? This finds them, builds a dependency graph, and spawns parallel agents to resolve them all at once. Clears the backlog in minutes.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: specific TODO pattern or file]</code></p>
@@ -446,7 +445,7 @@
               <code class="command-detail-name">/resolve_pr_parallel</code>
             </div>
             <p class="command-detail-description">
-              Resolve all PR comments using parallel processing.
+              Same deal, but for PR review comments. Fetch unresolved threads, spawn parallel resolver agents, commit the fixes, and mark threads as resolved. Your reviewers will wonder how you're so fast.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: PR number or current PR]</code></p>
@@ -468,7 +467,7 @@
               <code class="command-detail-name">/resolve_todo_parallel</code>
             </div>
             <p class="command-detail-description">
-              Resolve all pending CLI todos using parallel processing.
+              Those todo files in your <code>/todos</code> directory? Point this at them and watch parallel agents knock them out—analyzing dependencies, executing in the right order, marking resolved as they finish.
             </p>
             <h4>Arguments</h4>
             <p><code>[optional: specific todo ID or pattern]</code></p>
@@ -491,7 +490,7 @@
               <code class="command-detail-name">/prime</code>
             </div>
             <p class="command-detail-description">
-              Prime/setup command for project initialization.
+              Your project initialization command. What exactly it does depends on your project setup—think of it as the "get everything ready" button before you start coding.
             </p>
             <div class="card-code-block">
               <pre><code>/prime</code></pre>

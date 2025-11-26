@@ -73,8 +73,7 @@
       <article class="docs-article">
         <h1><i class="fa-solid fa-wand-magic-sparkles color-accent"></i> Skill Reference</h1>
         <p class="lead">
-          Complete documentation for all 11 intelligent skills. Skills provide deep domain expertise
-          that Claude Code can invoke on-demand, including references, templates, and workflows.
+          Think of skills as reference manuals that Claude Code can read mid-conversation. When you're writing Rails code and want DHH's style, or building a gem like Andrew Kane would, you don't need to paste documentation—just invoke the skill. Claude reads it, absorbs the patterns, and writes code that way.
         </p>
 
         <div class="usage-box">
@@ -95,8 +94,7 @@ skill: create-agent-skills</code></pre>
           <div class="callout-content">
             <h4>Skills vs Agents</h4>
             <p>
-              <strong>Agents</strong> are specialized personas invoked with <code>claude agent [name]</code>.
-              <strong>Skills</strong> are bodies of knowledge (references, templates, workflows) invoked with <code>skill: [name]</code>.
+              <strong>Agents</strong> are personas—they <em>do</em> things. <strong>Skills</strong> are knowledge—they teach Claude <em>how</em> to do things. Use <code>claude agent [name]</code> when you want someone to review your code. Use <code>skill: [name]</code> when you want to write code in a particular style yourself.
             </p>
           </div>
         </div>
@@ -104,7 +102,7 @@ skill: create-agent-skills</code></pre>
         <!-- Development Tools -->
         <section id="development-tools">
           <h2><i class="fa-solid fa-code"></i> Development Tools (7)</h2>
-          <p>Skills for code generation, gem writing, and development patterns.</p>
+          <p>These skills teach Claude specific coding styles and architectural patterns. Use them when you want code that follows a particular philosophy—not just any working code, but code that looks like it was written by a specific person or framework.</p>
 
           <div class="skill-detail" id="create-agent-skills">
             <div class="skill-detail-header">
@@ -112,8 +110,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Meta</span>
             </div>
             <p class="skill-detail-description">
-              Expert guidance for creating, writing, building, and refining Claude Code Skills.
-              Use when working with SKILL.md files or authoring new skills.
+              You're writing a skill right now, but you're not sure if you're structuring the SKILL.md file correctly. Should the examples go before the theory? How do you organize workflows vs. references? This skill is the answer—it's the master template for building skills themselves.
             </p>
             <h4>Capabilities</h4>
             <ul>
@@ -145,7 +142,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Meta</span>
             </div>
             <p class="skill-detail-description">
-              Guide for creating effective skills with a 6-step process.
+              The simpler, step-by-step version of <code>create-agent-skills</code>. When you just want a checklist to follow from blank file to packaged skill, use this. It's less about theory, more about "do step 1, then step 2."
             </p>
             <h4>6-Step Process</h4>
             <ol>
@@ -167,8 +164,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Rails</span>
             </div>
             <p class="skill-detail-description">
-              Write Ruby and Rails code in DHH's distinctive 37signals style.
-              Triggers on Ruby/Rails code generation or when mentioning DHH, 37signals, Basecamp, HEY.
+              You want Rails controllers that are five lines, not fifty. Models that handle authorization, broadcasting, and business logic without service objects everywhere. This skill teaches Claude to write code the way DHH writes it at 37signals—REST-pure, Hotwire-first, no architectural astronautics.
             </p>
             <h4>Key Patterns</h4>
             <ul>
@@ -196,8 +192,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Ruby</span>
             </div>
             <p class="skill-detail-description">
-              Write Ruby gems following Andrew Kane's proven patterns and philosophy.
-              Based on 100+ gems with 374M+ downloads.
+              Andrew Kane has written 100+ Ruby gems with 374 million downloads. Every gem follows the same patterns: minimal dependencies, class macro DSLs, Rails integration without Rails coupling. When you're building a gem and want it to feel production-ready from day one, this is how you do it.
             </p>
             <h4>Philosophy</h4>
             <ul>
@@ -232,8 +227,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">AI</span>
             </div>
             <p class="skill-detail-description">
-              Build type-safe, composable LLM applications with DSPy.rb.
-              Use when implementing predictable AI features in Ruby.
+              You're adding AI features to your Rails app, but you don't want brittle prompt strings scattered everywhere. DSPy.rb gives you type-safe signatures, composable predictors, and tool-using agents. This skill shows you how to use it—from basic inference to ReAct agents that iterate until they get the answer right.
             </p>
             <h4>Predictor Types</h4>
             <ul>
@@ -276,8 +270,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Design</span>
             </div>
             <p class="skill-detail-description">
-              Create distinctive, production-grade frontend interfaces.
-              Generates creative, polished code that avoids generic AI aesthetics.
+              You've seen what AI usually generates: Inter font, purple gradients, rounded corners on everything. This skill teaches Claude to design interfaces that don't look like every other AI-generated site. It's about purposeful typography, unexpected color palettes, and interfaces with personality.
             </p>
             <h4>Design Thinking</h4>
             <ul>
@@ -311,7 +304,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Docs</span>
             </div>
             <p class="skill-detail-description">
-              Capture solved problems as categorized documentation with YAML frontmatter for fast lookup.
+              You just fixed a weird build error after an hour of debugging. Tomorrow you'll forget how you fixed it. This skill automatically detects when you solve something (phrases like "that worked" or "it's fixed") and documents it with YAML frontmatter so you can find it again. Think of it as a photographic memory for solved problems.
             </p>
             <h4>Auto-Triggers</h4>
             <p>Phrases: "that worked", "it's fixed", "working now", "problem solved"</p>
@@ -343,7 +336,7 @@ skill: create-agent-skills</code></pre>
         <!-- Content & Workflow -->
         <section id="content-workflow">
           <h2><i class="fa-solid fa-pen-fancy"></i> Content & Workflow (3)</h2>
-          <p>Skills for content editing, task tracking, and parallel development.</p>
+          <p>Writing, editing, and organizing work. These skills handle everything from style guide compliance to git worktree management—the meta-work that makes the real work easier.</p>
 
           <div class="skill-detail" id="every-style-editor">
             <div class="skill-detail-header">
@@ -351,8 +344,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Content</span>
             </div>
             <p class="skill-detail-description">
-              Review and edit copy to ensure adherence to Every's style guide.
-              Provides systematic line-by-line review.
+              You wrote a draft, but you're not sure if it matches Every's style guide. Should "internet" be capitalized? Is this comma splice allowed? This skill does a four-phase line-by-line review: context, detailed edits, mechanical checks, and actionable recommendations. It's like having a copy editor who never gets tired.
             </p>
             <h4>Four-Phase Review</h4>
             <ol>
@@ -380,8 +372,7 @@ skill: create-agent-skills</code></pre>
               <span class="skill-badge">Workflow</span>
             </div>
             <p class="skill-detail-description">
-              File-based todo tracking system in the <code>todos/</code> directory.
-              Integrates with code review and slash commands.
+              Your todo list is a bunch of markdown files in a <code>todos/</code> directory. Each filename encodes status, priority, and description. No database, no UI, just files with YAML frontmatter. When you need to track work without setting up Jira, this is the system.
             </p>
             <h4>File Format</h4>
             <div class="card-code-block">
@@ -426,8 +417,7 @@ dependencies: []
               <span class="skill-badge">Git</span>
             </div>
             <p class="skill-detail-description">
-              Manage Git worktrees for isolated parallel development.
-              Handles creating, listing, switching, and cleaning up worktrees.
+              You're working on a feature branch, but you need to review a PR without losing your current work. Git worktrees let you have multiple branches checked out simultaneously in separate directories. This skill manages them—create, switch, cleanup—so you can context-switch without stashing or committing half-finished code.
             </p>
             <h4>Commands</h4>
             <div class="card-code-block">
@@ -462,7 +452,7 @@ bash scripts/worktree-manager.sh cleanup</code></pre>
         <!-- Image Generation -->
         <section id="image-generation">
           <h2><i class="fa-solid fa-image"></i> Image Generation (1)</h2>
-          <p>AI-powered image generation and editing.</p>
+          <p>Generate images with AI. Not stock photos you found on Unsplash—images you describe and the model creates.</p>
 
           <div class="skill-detail featured" id="gemini-imagegen">
             <div class="skill-detail-header">
@@ -470,8 +460,7 @@ bash scripts/worktree-manager.sh cleanup</code></pre>
               <span class="skill-badge highlight">AI Images</span>
             </div>
             <p class="skill-detail-description">
-              Generate and edit images using Google's Gemini API (Nano Banana).
-              Supports text-to-image, image editing, multi-turn refinement, and composition.
+              Need a logo with specific text? A product mockup on a marble surface? An illustration in a kawaii style? This skill wraps Google's Gemini image generation API. You describe what you want, it generates it. You can edit existing images, refine over multiple turns, or compose from reference images. All through simple Python scripts.
             </p>
 
             <h4>Features</h4>
