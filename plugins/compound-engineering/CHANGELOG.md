@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- **`/technical_review` command** — Superseded by configurable review agents
+- **Legacy dedicated plan-review command** — Superseded by configurable review agents
 
 ---
 

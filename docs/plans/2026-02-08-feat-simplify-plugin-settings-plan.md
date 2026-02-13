@@ -142,11 +142,11 @@ The specialized agents in compound.md are problem-type-based (performance → pe
 
 ### Phase 5: Structural Cleanup
 
-**5a. Delete `technical_review.md`**
+**5a. Delete legacy dedicated review command**
 
-`commands/technical_review.md` is a one-line command (`Have @agent-dhh-rails-reviewer @agent-kieran-rails-reviewer @agent-code-simplicity-reviewer review...`) with `disable-model-invocation: true`. It duplicates the `/plan_review` skill. Delete it.
+The legacy one-line dedicated review command (`Have @agent-dhh-rails-reviewer @agent-kieran-rails-reviewer @agent-code-simplicity-reviewer review...`) had `disable-model-invocation: true` and duplicated the `/plan_review` skill. Delete it.
 
-- [x] Delete `plugins/compound-engineering/commands/technical_review.md`
+- [x] Delete the legacy dedicated review command file from `plugins/compound-engineering/commands/`
 
 **5b. Add `disable-model-invocation: true` to `setup.md`**
 
@@ -156,9 +156,9 @@ The setup command is deliberate — users run it explicitly. It should not be au
 
 **5c. Update component counts**
 
-After changes: 29 agents, 24 commands (25 - 1 deleted technical_review), 18 skills, 1 MCP.
+After changes: 29 agents, 24 commands (25 - 1 deleted legacy review command), 18 skills, 1 MCP.
 
-Wait — with setup.md added and technical_review.md deleted: 25 - 1 = 24. Same as main. Verify actual count after changes.
+Wait - with setup.md added and the legacy review command deleted: 25 - 1 = 24. Same as main. Verify actual count after changes.
 
 - [x] Update `plugin.json` description with correct counts
 - [x] Update `marketplace.json` description with correct counts
@@ -166,7 +166,7 @@ Wait — with setup.md added and technical_review.md deleted: 25 - 1 = 24. Same 
 
 **5d. Update CHANGELOG.md**
 
-- [x] Add entry for v2.32.0 documenting: settings support, schema-drift-detector wired in, technical_review removed
+- [x] Add entry for v2.32.0 documenting: settings support, schema-drift-detector wired in, and the legacy review command removed
 
 ## Acceptance Criteria
 
@@ -179,7 +179,7 @@ Wait — with setup.md added and technical_review.md deleted: 25 - 1 = 24. Same 
 - [ ] `/workflows:review` runs `schema-drift-detector` for PRs with migrations or schema.rb
 - [ ] `/workflows:work` reads agents from `.local.md` when present
 - [ ] `compound.md` unchanged except for a reference to the setup command
-- [ ] `technical_review.md` deleted
+- [ ] Legacy dedicated review command deleted
 - [ ] No JSON config files — only `.local.md`
 - [ ] Config file is optional — everything works without it
 - [ ] Conditional agents (migrations, frontend, architecture, data) remain hardcoded in review.md

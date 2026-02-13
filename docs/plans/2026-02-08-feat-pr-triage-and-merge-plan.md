@@ -71,7 +71,7 @@ Show the diff for each PR, get a go/no-go, then either merge or comment. PRs are
 
 ### PR #112 - feat(skills): add document-review skill
 - **Author:** tmchow | enhancement
-- **What:** Adds document-review skill for brainstorm/plan refinement, renames `/plan_review` → `/technical_review`
+- **What:** Adds document-review skill for brainstorm/plan refinement and renames `/plan_review` to a dedicated review command (later removed)
 - **Note:** Breaking rename - needs review
 - **Action:** Review diff → decide
 
