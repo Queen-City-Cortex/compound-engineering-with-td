@@ -99,7 +99,7 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 | `/reproduce-bug` | Reproduce bugs using logs and console |
 | `/resolve_parallel` | Resolve TODO comments in parallel |
 | `/resolve_pr_parallel` | Resolve PR comments in parallel |
-| `/resolve_todo_parallel` | Resolve todos in parallel |
+| `/resolve_todo_parallel` | Resolve td issues in parallel |
 | `/triage` | Triage and prioritize issues |
 | `/test-browser` | Run browser tests on PR-affected pages |
 | `/xcode-test` | Build and test iOS apps on simulator |
@@ -132,7 +132,7 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 | `brainstorming` | Explore requirements and approaches through collaborative dialogue |
 | `document-review` | Improve documents through structured self-review |
 | `every-style-editor` | Review copy for Every's style guide compliance |
-| `file-todos` | File-based todo tracking system |
+| `td` | td CLI task and issue tracking |
 | `git-worktree` | Manage Git worktrees for parallel development |
 | `resolve-pr-parallel` | Resolve PR review comments in parallel |
 | `setup` | Configure which review agents run for your project |

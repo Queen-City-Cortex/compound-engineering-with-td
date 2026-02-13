@@ -350,7 +350,7 @@ claude agent git-history-analyzer "Show changes to user model"</code></pre>
             <li><strong>Isolation</strong> - Spins up a git worktree so the review doesn't mess with your working directory</li>
             <li><strong>Parallel execution</strong> - Launches 10+ agents simultaneously (security, performance, architecture, accessibility...)</li>
             <li><strong>Synthesis</strong> - Sorts findings by severity (P1 = blocks merge, P2 = should fix, P3 = nice-to-have)</li>
-            <li><strong>Persistence</strong> - Creates todo files so you don't lose track of issues</li>
+            <li><strong>Persistence</strong> - Creates td issues so you do not lose track of issues</li>
             <li><strong>Summary</strong> - Hands you a readable report with action items</li>
           </ol>
 
@@ -420,16 +420,16 @@ skill: gemini-imagegen
             <li><span class="badge badge-nice">P3 Nice-to-Have</span> - Would be better, but ship without it if you need to. Documentation, minor cleanup, style issues.</li>
           </ul>
 
-          <h3>Working with Todo Files</h3>
-          <p>After a review, you'll have a <code>todos/</code> directory full of markdown files. Each one is a single issue to fix:</p>
+          <h3>Working with td Issues</h3>
+          <p>After a review, findings are tracked as <code>td</code> issues:</p>
           <div class="card-code-block">
-            <pre><code># List all pending todos
-ls todos/*-pending-*.md
+            <pre><code># List open issues
+td list --status open
 
 # Triage findings
 /triage
 
-# Resolve todos in parallel
+# Resolve issues in parallel
 /resolve_todo_parallel</code></pre>
           </div>
         </section>

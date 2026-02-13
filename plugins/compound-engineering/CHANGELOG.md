@@ -64,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Context token optimization (79% reduction)** — Plugin was consuming 316% of the context description budget, causing Claude Code to silently exclude components. Now at 65% with room to grow:
   - All 29 agent descriptions trimmed from ~1,400 to ~180 chars avg (examples moved to agent body)
   - 18 manual commands marked `disable-model-invocation: true` (side-effect commands like `/lfg`, `/deploy-docs`, `/triage`, etc.)
-  - 6 manual skills marked `disable-model-invocation: true` (`orchestrating-swarms`, `git-worktree`, `skill-creator`, `compound-docs`, `file-todos`, `resolve-pr-parallel`)
+  - 6 manual skills marked `disable-model-invocation: true` (`orchestrating-swarms`, `git-worktree`, `skill-creator`, `compound-docs`, `td`, `resolve-pr-parallel`)
 - **git-worktree**: Remove confirmation prompt for worktree creation ([@Sam Xie](https://github.com/samxie))
 - **Prevent subagents from writing intermediary files** in compound workflow ([@Trevin Chow](https://github.com/trevin))
 
@@ -241,7 +241,7 @@ Huge thanks to the community contributors who made this release possible! 🙌
 
 - **`/lfg` command** - Full autonomous engineering workflow
   - Orchestrates complete feature development from plan to PR
-  - Runs: plan → deepen-plan → work → review → resolve todos → test-browser → feature-video
+  - Runs: plan → deepen-plan → work → review → resolve td issues → test-browser → feature-video
   - Uses ralph-loop for autonomous completion
   - Migrated from local command, updated to use `/test-browser` instead of `/playwright-test`
 
@@ -477,7 +477,7 @@ These updates operationalize a key insight from building agent-native mobile app
 - **All skills** - Fixed spec compliance issues across 12 skills:
   - Reference files now use proper markdown links (`[file.md](./references/file.md)`) instead of backtick text
   - Descriptions now use third person ("This skill should be used when...") per skill-creator spec
-  - Affected skills: agent-native-architecture, andrew-kane-gem-writer, compound-docs, create-agent-skills, dhh-rails-style, dspy-ruby, every-style-editor, file-todos, frontend-design, gemini-imagegen
+  - Affected skills: agent-native-architecture, andrew-kane-gem-writer, compound-docs, create-agent-skills, dhh-rails-style, dspy-ruby, every-style-editor, td, frontend-design, gemini-imagegen
 
 ### Added
 

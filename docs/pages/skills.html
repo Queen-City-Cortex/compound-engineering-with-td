@@ -391,48 +391,48 @@ skill: create-agent-skills</code></pre>
             </div>
           </div>
 
-          <div class="skill-detail" id="file-todos">
+          <div class="skill-detail" id="td">
             <div class="skill-detail-header">
-              <h3>file-todos</h3>
+              <h3>td</h3>
               <span class="skill-badge">Workflow</span>
             </div>
             <p class="skill-detail-description">
-              Your todo list is a bunch of markdown files in a <code>todos/</code> directory. Each filename encodes status, priority, and description. No database, no UI, just files with YAML frontmatter. When you need to track work without setting up Jira, this is the system.
+              Use <code>td</code> as the single source of truth for tasks and issues. Create, prioritize, start, review, and close work items directly with the CLI.
             </p>
-            <h4>File Format</h4>
+            <h4>Core Commands</h4>
             <div class="card-code-block">
-              <pre><code># Naming convention
-{issue_id}-{status}-{priority}-{description}.md
+              <pre><code># Create issue
+td new --type task --priority P1 --title "Fix auth race"
 
-# Examples
-001-pending-p1-security-vulnerability.md
-002-ready-p2-performance-optimization.md
-003-complete-p3-code-cleanup.md</code></pre>
+# List open issues
+td list --status open
+
+# Start work
+td start td-abc1
+
+# Submit for review
+td review td-abc1
+
+# Close or approve
+td close td-abc1
+td approve td-abc1</code></pre>
             </div>
-            <h4>Status Values</h4>
+            <h4>Status Flow</h4>
             <ul>
-              <li><code>pending</code> - Needs triage</li>
-              <li><code>ready</code> - Approved for work</li>
-              <li><code>complete</code> - Done</li>
+              <li><code>open</code> - queued and ready to plan</li>
+              <li><code>in_progress</code> - currently being implemented</li>
+              <li><code>in_review</code> - waiting for review/approval</li>
+              <li><code>blocked</code> - waiting on dependency</li>
+              <li><code>closed</code> - completed or explicitly closed</li>
             </ul>
             <h4>Priority Values</h4>
             <ul>
-              <li><code>p1</code> - Critical</li>
-              <li><code>p2</code> - Important</li>
-              <li><code>p3</code> - Nice-to-have</li>
+              <li><code>P1</code> - Critical</li>
+              <li><code>P2</code> - Important</li>
+              <li><code>P3</code> - Nice-to-have</li>
             </ul>
-            <h4>YAML Frontmatter</h4>
             <div class="card-code-block">
-              <pre><code>---
-status: pending
-priority: p1
-issue_id: "001"
-tags: [security, authentication]
-dependencies: []
----</code></pre>
-            </div>
-            <div class="card-code-block">
-              <pre><code>skill: file-todos</code></pre>
+              <pre><code>skill: td</code></pre>
             </div>
           </div>
 

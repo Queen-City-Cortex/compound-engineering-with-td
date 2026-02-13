@@ -37,7 +37,7 @@ gh api repos/{owner}/{repo}/pulls/PR_NUMBER/comments
 
 ### 2. Plan
 
-Create a TodoWrite list of all unresolved items grouped by type:
+Create a td work list of all unresolved items grouped by type:
 - Code changes requested
 - Questions to answer
 - Style/convention fixes
@@ -53,7 +53,7 @@ If there are 3 comments, spawn 3 agents:
 2. Task pr-comment-resolver(comment2)
 3. Task pr-comment-resolver(comment3)
 
-Always run all in parallel subagents/Tasks for each Todo item.
+Always run all in parallel subagents/Tasks for each issue item.
 
 ### 4. Commit & Resolve
 

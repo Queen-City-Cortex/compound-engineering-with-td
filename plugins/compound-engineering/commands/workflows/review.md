@@ -205,9 +205,9 @@ Complete system context map with component interactions
 
 Run the Task code-simplicity-reviewer() to see if we can simplify the code.
 
-### 5. Findings Synthesis and Todo Creation Using file-todos Skill
+### 5. Findings Synthesis and td Issue Creation
 
-<critical_requirement> ALL findings MUST be stored in the todos/ directory using the file-todos skill. Create todo files immediately after synthesis - do NOT present findings for user approval first. Use the skill for structured todo management. </critical_requirement>
+<critical_requirement> ALL findings MUST be stored as `td` issues. Create issues immediately after synthesis. Do not use file-based todo tracking. </critical_requirement>
 
 #### Step 1: Synthesize All Findings
 
@@ -228,128 +228,42 @@ Remove duplicates, prioritize by severity and impact.
 
 </synthesis_tasks>
 
-#### Step 2: Create Todo Files Using file-todos Skill
+#### Step 2: Create td Issues
 
-<critical_instruction> Use the file-todos skill to create todo files for ALL findings immediately. Do NOT present findings one-by-one asking for user approval. Create all todo files in parallel using the skill, then summarize results to user. </critical_instruction>
+<critical_instruction> Use `td` to create issues for ALL findings immediately. Do NOT present findings one-by-one asking for approval first. Create issues in parallel where possible, then summarize results. </critical_instruction>
 
-**Implementation Options:**
-
-**Option A: Direct File Creation (Fast)**
-
-- Create todo files directly using Write tool
-- All findings in parallel for speed
-- Use standard template from `.claude/skills/file-todos/assets/todo-template.md`
-- Follow naming convention: `{issue_id}-pending-{priority}-{description}.md`
-
-**Option B: Sub-Agents in Parallel (Recommended for Scale)** For large PRs with 15+ findings, use sub-agents to create finding files in parallel:
+For large PRs with 15+ findings, use sub-agents to create issue batches in parallel:
 
 ```bash
 # Launch multiple finding-creator agents in parallel
-Task() - Create todos for first finding
-Task() - Create todos for second finding
-Task() - Create todos for third finding
-etc. for each finding.
+Task() - Create td issues for first finding batch
+Task() - Create td issues for second finding batch
+Task() - Create td issues for third finding batch
 ```
 
-Sub-agents can:
+Sub-agents should:
 
-- Process multiple findings simultaneously
-- Write detailed todo files with all sections filled
-- Organize findings by severity
-- Create comprehensive Proposed Solutions
-- Add acceptance criteria and work logs
-- Complete much faster than sequential processing
+- Process findings concurrently
+- Open issues with clear title/description
+- Assign priority and labels
+- Include acceptance criteria in description
+- Link dependencies via `td dep add`
 
-**Execution Strategy:**
+Execution strategy:
 
-1. Synthesize all findings into categories (P1/P2/P3)
-2. Group findings by severity
-3. Launch 3 parallel sub-agents (one per severity level)
-4. Each sub-agent creates its batch of todos using the file-todos skill
-5. Consolidate results and present summary
-
-**Process (Using file-todos Skill):**
-
-1. For each finding:
-
-   - Determine severity (P1/P2/P3)
-   - Write detailed Problem Statement and Findings
-   - Create 2-3 Proposed Solutions with pros/cons/effort/risk
-   - Estimate effort (Small/Medium/Large)
-   - Add acceptance criteria and work log
-
-2. Use file-todos skill for structured todo management:
-
-   ```bash
-   skill: file-todos
-   ```
-
-   The skill provides:
-
-   - Template location: `.claude/skills/file-todos/assets/todo-template.md`
-   - Naming convention: `{issue_id}-{status}-{priority}-{description}.md`
-   - YAML frontmatter structure: status, priority, issue_id, tags, dependencies
-   - All required sections: Problem Statement, Findings, Solutions, etc.
-
-3. Create todo files in parallel:
-
-   ```bash
-   {next_id}-pending-{priority}-{description}.md
-   ```
-
-4. Examples:
-
-   ```
-   001-pending-p1-path-traversal-vulnerability.md
-   002-pending-p1-api-response-validation.md
-   003-pending-p2-concurrency-limit.md
-   004-pending-p3-unused-parameter.md
-   ```
-
-5. Follow template structure from file-todos skill: `.claude/skills/file-todos/assets/todo-template.md`
-
-**Todo File Structure (from template):**
-
-Each todo must include:
-
-- **YAML frontmatter**: status, priority, issue_id, tags, dependencies
-- **Problem Statement**: What's broken/missing, why it matters
-- **Findings**: Discoveries from agents with evidence/location
-- **Proposed Solutions**: 2-3 options, each with pros/cons/effort/risk
-- **Recommended Action**: (Filled during triage, leave blank initially)
-- **Technical Details**: Affected files, components, database changes
-- **Acceptance Criteria**: Testable checklist items
-- **Work Log**: Dated record with actions and learnings
-- **Resources**: Links to PR, issues, documentation, similar patterns
-
-**File naming convention:**
-
-```
-{issue_id}-{status}-{priority}-{description}.md
-
-Examples:
-- 001-pending-p1-security-vulnerability.md
-- 002-pending-p2-performance-optimization.md
-- 003-pending-p3-code-cleanup.md
-```
-
-**Status values:**
-
-- `pending` - New findings, needs triage/decision
-- `ready` - Approved by manager, ready to work
-- `complete` - Work finished
-
-**Priority values:**
-
-- `p1` - Critical (blocks merge, security/data issues)
-- `p2` - Important (should fix, architectural/performance)
-- `p3` - Nice-to-have (enhancements, cleanup)
-
-**Tagging:** Always add `code-review` tag, plus: `security`, `performance`, `architecture`, `rails`, `quality`, etc.
+1. Group findings by severity (P1/P2/P3)
+2. Launch 3 parallel sub-agents (one per severity bucket)
+3. For each finding, create a `td` issue:
+   - `td new --type task --priority P1 --title "..." --description "..."`
+4. Attach labels:
+   - `td update <issue-id> --labels "code-review,security"`
+5. Add dependencies where needed:
+   - `td dep add <issue-id> <blocking-issue-id>`
+6. Consolidate issue IDs and present summary
 
 #### Step 3: Summary Report
 
-After creating all todo files, present comprehensive summary:
+After creating all `td` issues, present comprehensive summary:
 
 ````markdown
 ## ✅ Code Review Complete
@@ -363,21 +277,21 @@ After creating all todo files, present comprehensive summary:
 - **🟡 IMPORTANT (P2):** [count] - Should Fix
 - **🔵 NICE-TO-HAVE (P3):** [count] - Enhancements
 
-### Created Todo Files:
+### Created td Issues:
 
 **P1 - Critical (BLOCKS MERGE):**
 
-- `001-pending-p1-{finding}.md` - {description}
-- `002-pending-p1-{finding}.md` - {description}
+- `td-abc1` - {description}
+- `td-abc2` - {description}
 
 **P2 - Important:**
 
-- `003-pending-p2-{finding}.md` - {description}
-- `004-pending-p2-{finding}.md` - {description}
+- `td-def1` - {description}
+- `td-def2` - {description}
 
 **P3 - Nice-to-Have:**
 
-- `005-pending-p3-{finding}.md` - {description}
+- `td-ghi1` - {description}
 
 ### Review Agents Used:
 
@@ -396,23 +310,23 @@ After creating all todo files, present comprehensive summary:
    - Implement fixes or request exemption
    - Verify fixes before merging PR
 
-2. **Triage All Todos**:
+2. **Triage All Findings into td**:
    ```bash
-   ls todos/*-pending-*.md  # View all pending todos
+   td list --status open    # View open findings
    /triage                  # Use slash command for interactive triage
    ```
 ````
 
-3. **Work on Approved Todos**:
+3. **Work on Approved td Issues**:
 
    ```bash
    /resolve_todo_parallel  # Fix all approved items efficiently
    ```
 
 4. **Track Progress**:
-   - Rename file when status changes: pending → ready → complete
-   - Update Work Log as you work
-   - Commit todos: `git add todos/ && git commit -m "refactor: add code review findings"`
+   - Update status in `td`: open -> in_progress -> in_review -> closed
+   - Add notes/logs via `td log` and `td comment`
+   - Commit code changes with issue IDs in commit messages
 
 ### Severity Breakdown:
 
@@ -487,7 +401,7 @@ After presenting the Summary Report, offer appropriate testing based on project 
 Spawn a subagent to run browser tests (preserves main context):
 
 ```
-Task general-purpose("Run /test-browser for PR #[number]. Test all affected pages, check for console errors, handle failures by creating todos and fixing.")
+Task general-purpose("Run /test-browser for PR #[number]. Test all affected pages, check for console errors, handle failures by creating td issues and fixing.")
 ```
 
 The subagent will:
@@ -496,7 +410,7 @@ The subagent will:
 3. Check for console errors
 4. Test critical interactions
 5. Pause for human verification on OAuth/email/payment flows
-6. Create P1 todos for any failures
+6. Create P1 td issues for any failures
 7. Fix and retry until all tests pass
 
 **Standalone:** `/test-browser [PR number]`
@@ -517,7 +431,7 @@ The subagent will:
 5. Take screenshots of key screens
 6. Capture console logs for errors
 7. Pause for human verification (Sign in with Apple, push, IAP)
-8. Create P1 todos for any failures
+8. Create P1 td issues for any failures
 9. Fix and retry until all tests pass
 
 **Standalone:** `/xcode-test [scheme]`

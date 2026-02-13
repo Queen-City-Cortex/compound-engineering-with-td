@@ -1,7 +1,7 @@
 ---
 name: every-style-editor
 description: "Reviews and edits text content to conform to Every's editorial style guide. Use when written content needs style compliance checks for headlines, punctuation, voice, and formatting."
-tools: Task, Glob, Grep, LS, ExitPlanMode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch
+tools: Task, Glob, Grep, LS, ExitPlanMode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, WebSearch
 model: inherit
 ---
 

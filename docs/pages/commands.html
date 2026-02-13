@@ -145,7 +145,7 @@
               <li><strong>Ultra-Thinking Analysis</strong> - Stakeholder perspectives, scenario exploration</li>
               <li><strong>Simplification Review</strong> - Run <code>code-simplicity-reviewer</code></li>
               <li><strong>Synthesize Findings</strong> - Categorize by severity (P1/P2/P3)</li>
-              <li><strong>Create Todo Files</strong> - Using file-todos skill for all findings</li>
+              <li><strong>Create td issues</strong> - Using td skill for all findings</li>
             </ol>
             <div class="callout callout-warning">
               <div class="callout-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
@@ -169,14 +169,14 @@
               Point this at a plan file and watch it execute—reading requirements, setting up environment, running tests, creating commits, opening PRs. It's the "just build the thing" button you wish you always had.
             </p>
             <h4>Arguments</h4>
-            <p><code>[plan file, specification, or todo file path]</code></p>
+            <p><code>[plan file, specification, or td issue ID]</code></p>
             <h4>Phases</h4>
             <ol>
               <li><strong>Quick Start</strong>
                 <ul>
                   <li>Read plan & clarify requirements</li>
                   <li>Setup environment (live or worktree)</li>
-                  <li>Create TodoWrite task list</li>
+                  <li>Create td issue plan</li>
                 </ul>
               </li>
               <li><strong>Execute</strong>
@@ -204,7 +204,7 @@
             </ol>
             <div class="card-code-block">
               <pre><code>/work plans/user-authentication.md
-/work todos/042-ready-p1-performance-issue.md</code></pre>
+/work td-042</code></pre>
             </div>
           </div>
 
@@ -245,7 +245,7 @@
         <!-- Utility Commands -->
         <section id="utility-commands">
           <h2><i class="fa-solid fa-wrench"></i> Utility Commands (12)</h2>
-          <p>The supporting cast—commands that do one specific thing really well. Generate changelogs, resolve todos in parallel, triage findings, create new commands. The utilities you reach for daily.</p>
+          <p>The supporting cast—commands that do one specific thing really well. Generate changelogs, resolve td issues in parallel, triage findings, create new commands. The utilities you reach for daily.</p>
 
           <div class="command-detail" id="changelog">
             <div class="command-detail-header">
@@ -395,20 +395,20 @@
               <code class="command-detail-name">/triage</code>
             </div>
             <p class="command-detail-description">
-              Got a pile of code review findings or security audit results? This turns them into actionable todos—one at a time, you decide: create the todo, skip it, or modify and re-present.
+              Got a pile of code review findings or security audit results? This turns them into actionable td issues—one at a time, you decide: create the issue, skip it, or modify and re-present.
             </p>
             <h4>Arguments</h4>
             <p><code>[findings list or source type]</code></p>
             <h4>User Decisions</h4>
             <ul>
-              <li><strong>"yes"</strong> - Create/update todo file, change status to ready</li>
-              <li><strong>"next"</strong> - Skip and delete from todos</li>
+              <li><strong>"yes"</strong> - Create/update td issue and set the right status</li>
+              <li><strong>"next"</strong> - Skip with reason</li>
               <li><strong>"custom"</strong> - Modify and re-present</li>
             </ul>
             <div class="callout callout-info">
               <div class="callout-icon"><i class="fa-solid fa-circle-info"></i></div>
               <div class="callout-content">
-                <p>This command does NOT write code. It only categorizes and creates todo files.</p>
+                <p>This command does NOT write code. It only categorizes findings and creates td issues.</p>
               </div>
             </div>
             <div class="card-code-block">
@@ -452,7 +452,7 @@
             <h4>Process</h4>
             <ol>
               <li>Get all unresolved PR comments</li>
-              <li>Create TodoWrite list</li>
+              <li>Create td issue plan</li>
               <li>Launch parallel <code>pr-comment-resolver</code> agents</li>
               <li>Commit, resolve threads, and push</li>
             </ol>
@@ -467,13 +467,13 @@
               <code class="command-detail-name">/resolve_todo_parallel</code>
             </div>
             <p class="command-detail-description">
-              Those todo files in your <code>/todos</code> directory? Point this at them and watch parallel agents knock them out—analyzing dependencies, executing in the right order, marking resolved as they finish.
+              Resolve open td issues in parallel by analyzing dependencies, executing independent workstreams concurrently, and closing issues as they finish.
             </p>
             <h4>Arguments</h4>
-            <p><code>[optional: specific todo ID or pattern]</code></p>
+            <p><code>[optional: specific td issue ID or filter]</code></p>
             <h4>Process</h4>
             <ol>
-              <li>Get unresolved TODOs from <code>/todos/*.md</code></li>
+              <li>Get unresolved issues with <code>td list --status open</code></li>
               <li>Analyze dependencies</li>
               <li>Spawn parallel agents</li>
               <li>Commit, mark as resolved, push</li>

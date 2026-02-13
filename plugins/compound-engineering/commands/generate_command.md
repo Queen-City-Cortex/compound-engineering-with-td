@@ -23,7 +23,7 @@ Create a new slash command in `.claude/commands/` for the requested task.
 **Development:**
 - Bash - run commands (git, tests, linters)
 - Task - launch specialized agents for complex tasks
-- TodoWrite - track progress with todo lists
+- td - track progress with issue lists
 
 **Web & APIs:**
 - WebFetch, WebSearch - research documentation

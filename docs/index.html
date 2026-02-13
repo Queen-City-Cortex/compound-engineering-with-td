@@ -258,7 +258,7 @@
               <h3>Assess</h3>
               <p class="pillar-tagline">Get twelve opinions without twelve meetings</p>
               <p class="pillar-description">
-                Type <code>/review PR#123</code> and go get coffee. When you come back, you'll have a security audit (did you sanitize that user input?), performance analysis (N+1 spotted on line 47), architecture review (this breaks the pattern from v2.3), data integrity check (that migration will fail in production), and eight more specialized reviews. All running in parallel. All categorized by severity. All stored as actionable P1/P2/P3 todos you can knock out in order.
+                Type <code>/review PR#123</code> and go get coffee. When you come back, you'll have a security audit (did you sanitize that user input?), performance analysis (N+1 spotted on line 47), architecture review (this breaks the pattern from v2.3), data integrity check (that migration will fail in production), and eight more specialized reviews. All running in parallel. All categorized by severity. All stored as actionable P1/P2/P3 td issues you can knock out in order.
               </p>
               <div class="pillar-tools">
                 <span class="tool-tag">security-sentinel</span>
@@ -280,7 +280,7 @@
               <div class="pillar-tools">
                 <span class="tool-tag">/compound</span>
                 <span class="tool-tag">compound-docs skill</span>
-                <span class="tool-tag">file-todos skill</span>
+                <span class="tool-tag">td skill</span>
               </div>
             </div>
           </div>
@@ -534,7 +534,7 @@
             <i class="fa-solid fa-terminal color-accent"></i> 23 Powerful Commands
           </h2>
           <p class="paragraph m secondary">
-            Slash commands that replace entire workflows. <code>/review</code> is your code review committee. <code>/plan</code> is your research team. <code>/triage</code> sorts 50 todos in the time it takes you to read five. Each one automates hours of work into a single line.
+            Slash commands that replace entire workflows. <code>/review</code> is your code review committee. <code>/plan</code> is your research team. <code>/triage</code> sorts 50 td issues in the time it takes you to read five. Each one automates hours of work into a single line.
           </p>
         </div>
 
@@ -659,7 +659,7 @@
                 <code class="command-name">/resolve_todo_parallel</code>
                 <span class="command-type-badge">util</span>
               </div>
-              <p class="command-description">Resolve file-based todos in parallel.</p>
+              <p class="command-description">Resolve td issues in parallel.</p>
             </div>
             <div class="command-card">
               <div class="command-header">
@@ -767,11 +767,11 @@
             </div>
             <div class="skill-card">
               <div class="skill-header">
-                <span class="skill-name">file-todos</span>
+                <span class="skill-name">td</span>
                 <span class="skill-badge">Workflow</span>
               </div>
-              <p class="skill-description">File-based todo tracking system with priorities and status.</p>
-              <code class="skill-usage">skill: file-todos</code>
+              <p class="skill-description">td CLI issue tracking with priorities, dependencies, and workflow status.</p>
+              <code class="skill-usage">skill: td</code>
             </div>
             <div class="skill-card">
               <div class="skill-header">

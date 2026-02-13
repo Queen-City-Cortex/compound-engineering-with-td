@@ -50,7 +50,7 @@ describe("loadClaudePlugin", () => {
     expect(patternCommand?.allowedTools).toEqual(["Read(.env)", "Bash(git:*)"])
 
     const planCommand = plugin.commands.find((command) => command.name === "workflows:plan")
-    expect(planCommand?.allowedTools).toEqual(["Question", "TodoWrite", "TodoRead"])
+    expect(planCommand?.allowedTools).toEqual(["Question", "Bash(td *)"])
 
     expect(plugin.mcpServers?.context7?.url).toBe("https://mcp.context7.com/mcp")
   })

@@ -43,7 +43,7 @@ describe("convertClaudeToPi", () => {
     expect(bundle.mcporterConfig?.mcpServers["local-tooling"]?.command).toBe("echo")
   })
 
-  test("transforms Task calls, AskUserQuestion, slash commands, and todo tool references", () => {
+  test("transforms Task calls, AskUserQuestion, and slash commands", () => {
     const plugin: ClaudePlugin = {
       root: "/tmp/plugin",
       manifest: { name: "fixture", version: "1.0.0" },
@@ -58,7 +58,7 @@ describe("convertClaudeToPi", () => {
             "- Task learnings-researcher(feature_description)",
             "Use AskUserQuestion tool for follow-up.",
             "Then use /workflows:work and /prompts:deepen-plan.",
-            "Track progress with TodoWrite and TodoRead.",
+            "Track progress with td list and td update.",
           ].join("\n"),
           sourcePath: "/tmp/plugin/commands/plan.md",
         },
@@ -82,7 +82,7 @@ describe("convertClaudeToPi", () => {
     expect(parsedPrompt.body).toContain("ask_user_question")
     expect(parsedPrompt.body).toContain("/workflows-work")
     expect(parsedPrompt.body).toContain("/deepen-plan")
-    expect(parsedPrompt.body).toContain("file-based todos (todos/ + /skill:file-todos)")
+    expect(parsedPrompt.body).toContain("Track progress with td list and td update.")
   })
 
   test("appends MCPorter compatibility note when command references MCP", () => {

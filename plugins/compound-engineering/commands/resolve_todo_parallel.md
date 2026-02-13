@@ -1,37 +1,52 @@
 ---
 name: resolve_todo_parallel
-description: Resolve all pending CLI todos using parallel processing
-argument-hint: "[optional: specific todo ID or pattern]"
+description: Resolve td issues in parallel
+argument-hint: "[optional: specific td issue ID or filter]"
 ---
 
-Resolve all TODO comments using parallel processing.
+Resolve queued `td` issues using parallel processing.
 
 ## Workflow
 
 ### 1. Analyze
 
-Get all unresolved TODOs from the /todos/\*.md directory
+Gather unresolved issues from `td`:
 
-If any todo recommends deleting, removing, or gitignoring files in `docs/plans/` or `docs/solutions/`, skip it and mark it as `wont_fix`. These are compound-engineering pipeline artifacts that are intentional and permanent.
+- `td list --status open`
+- `td list --status blocked`
+- Filter by argument when provided (ID, priority, or text)
+
+If an issue recommends deleting, removing, or gitignoring files in `docs/plans/` or `docs/solutions/`, skip it and close with a note because those are protected artifacts.
 
 ### 2. Plan
 
-Create a TodoWrite list of all unresolved items grouped by type.Make sure to look at dependencies that might occur and prioritize the ones needed by others. For example, if you need to change a name, you must wait to do the others. Output a mermaid flow diagram showing how we can do this. Can we do everything in parallel? Do we need to do one first that leads to others in parallel? I'll put the to-dos in the mermaid diagram flow‑wise so the agent knows how to proceed in order.
+Build an execution plan from `td` data:
+
+- identify dependencies (`td dep <issue-id>`)
+- run prerequisites first
+- run independent issues in parallel
+
+Output a mermaid flow diagram that shows dependency order and parallel lanes.
 
 ### 3. Implement (PARALLEL)
 
-Spawn a pr-comment-resolver agent for each unresolved item in parallel.
+For each ready independent issue, spawn a parallel resolver:
 
-So if there are 3 comments, it will spawn 3 pr-comment-resolver agents in parallel. liek this
+1. `Task pr-comment-resolver(td-issue-1 details)`
+2. `Task pr-comment-resolver(td-issue-2 details)`
+3. `Task pr-comment-resolver(td-issue-3 details)`
 
-1. Task pr-comment-resolver(comment1)
-2. Task pr-comment-resolver(comment2)
-3. Task pr-comment-resolver(comment3)
+Each resolver must:
 
-Always run all in parallel subagents/Tasks for each Todo item.
+- `td start <issue-id>` when beginning
+- implement and test the fix
+- `td review <issue-id>` or `td close <issue-id>` with notes
 
-### 4. Commit & Resolve
+### 4. Commit and close
 
-- Commit changes
-- Remove the TODO from the file, and mark it as resolved.
-- Push to remote
+- Commit code changes with clear messages.
+- Push to remote.
+- Ensure all resolved issues are no longer open:
+  - `td list --status open`
+
+If work remains, repeat from step 1.

@@ -472,7 +472,7 @@ end
 - [ ] All template sections are complete
 - [ ] Links and references are working
 - [ ] Acceptance criteria are measurable
-- [ ] Add names of files in pseudo code examples and todo lists
+- [ ] Add names of files in pseudo code examples and td issue lists
 - [ ] Add an ERD mermaid diagram if applicable for new model changes
 
 ## Output Format

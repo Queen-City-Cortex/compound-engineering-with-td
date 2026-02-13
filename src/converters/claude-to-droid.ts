@@ -18,8 +18,6 @@ const CLAUDE_TO_DROID_TOOLS: Record<string, string> = {
   webfetch: "FetchUrl",
   websearch: "WebSearch",
   task: "Task",
-  todowrite: "TodoWrite",
-  todoread: "TodoWrite",
   question: "AskUser",
 }
 
@@ -34,7 +32,6 @@ const VALID_DROID_TOOLS = new Set([
   "Execute",
   "WebSearch",
   "FetchUrl",
-  "TodoWrite",
   "Task",
   "AskUser",
 ])

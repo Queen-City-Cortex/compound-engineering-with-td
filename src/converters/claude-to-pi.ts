@@ -104,8 +104,6 @@ function transformContentForPi(body: string): string {
 
   // Claude-specific tool references
   result = result.replace(/\bAskUserQuestion\b/g, "ask_user_question")
-  result = result.replace(/\bTodoWrite\b/g, "file-based todos (todos/ + /skill:file-todos)")
-  result = result.replace(/\bTodoRead\b/g, "file-based todos (todos/ + /skill:file-todos)")
 
   // /command-name or /workflows:command-name -> /workflows-command-name
   const slashCommandPattern = /(?<![:\w])\/([a-z][a-z0-9_:-]*?)(?=[\s,."')\]}`]|$)/gi

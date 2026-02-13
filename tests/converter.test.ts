@@ -31,8 +31,6 @@ describe("convertClaudeToOpenCode", () => {
       "read",
       "skill",
       "task",
-      "todoread",
-      "todowrite",
       "webfetch",
       "write",
     ])
@@ -48,9 +46,6 @@ describe("convertClaudeToOpenCode", () => {
     expect(readPermission[".env"]).toBe("allow")
 
     expect(permission.question).toBe("allow")
-    expect(permission.todowrite).toBe("allow")
-    expect(permission.todoread).toBe("allow")
-
     const agentFile = bundle.agents.find((agent) => agent.name === "repo-research-analyst")
     expect(agentFile).toBeDefined()
     const parsed = parseFrontmatter(agentFile!.content)
@@ -181,8 +176,6 @@ describe("convertClaudeToOpenCode", () => {
       patch: "allow",
       task: "allow",
       question: "allow",
-      todowrite: "allow",
-      todoread: "allow",
     })
   })
 

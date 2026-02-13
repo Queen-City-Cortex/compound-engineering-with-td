@@ -117,7 +117,7 @@ Commands that should only run when explicitly invoked by the user:
 | `/slfg` | Side effect: swarm workflow |
 | `/triage` | Side effect: categorizes findings |
 | `/resolve_parallel` | Side effect: resolves TODOs |
-| `/resolve_todo_parallel` | Side effect: resolves todos |
+| `/resolve_todo_parallel` | Side effect: resolves td issues |
 | `/resolve_pr_parallel` | Side effect: resolves PR comments |
 | `/feature-video` | Side effect: records video |
 | `/test-browser` | Side effect: runs browser tests |
@@ -150,7 +150,7 @@ Skills that are manual workflows:
 | `git-worktree` | Only invoked manually |
 | `resolve-pr-parallel` | Side effect |
 | `compound-docs` | Only invoked manually |
-| `file-todos` | Only invoked manually |
+| `td` | Only invoked manually |
 
 Keep without the flag (Claude should auto-invoke):
 - `dhh-rails-style` — Claude should use when writing Rails code
