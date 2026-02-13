@@ -204,6 +204,30 @@ The `agent-browser` skill provides comprehensive documentation on usage.
 claude /plugin install compound-engineering
 ```
 
+## Task Tracking (td)
+
+This plugin uses `td` as the task tracking source of truth.
+
+Initialize once per project:
+
+```bash
+td init
+```
+
+Common commands:
+
+```bash
+# Create a task
+td new --type task --priority P2 --title "Investigate flaky test"
+
+# View open work
+td list --status open
+```
+
+Notes:
+- `/triage` and `/resolve_todo_parallel` expect `td` to be initialized.
+- `/resolve_parallel` handles inline TODO/FIXME code comments and can create deferred `td` issues.
+
 ## Known Issues
 
 ### MCP Servers Not Auto-Loading

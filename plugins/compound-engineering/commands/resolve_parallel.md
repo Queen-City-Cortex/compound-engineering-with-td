@@ -1,27 +1,41 @@
 ---
 name: resolve_parallel
-description: Resolve all TODO comments using parallel processing
+description: Resolve TODO and FIXME code comments using parallel processing
 argument-hint: "[optional: specific TODO pattern or file]"
 disable-model-invocation: true
 ---
 
-Resolve all TODO comments using parallel processing.
+Resolve inline `TODO` and `FIXME` comments using parallel processing.
 
 ## Workflow
 
 ### 1. Analyze
 
-Gather unresolved items from the current context and identify which ones should be tracked in `td`.
+Find unresolved comment markers in the requested scope:
+
+- `TODO`
+- `FIXME`
+- `HACK` (when present and actionable)
+
+Collect file path, line number, and the note text for each item.
 
 ### 2. Plan
 
-Create a td work list of all unresolved items grouped by type.Make sure to look at dependencies that might occur and prioritize the ones needed by others. For example, if you need to change a name, you must wait to do the others. Output a mermaid flow diagram showing how we can do this. Can we do everything in parallel? Do we need to do one first that leads to others in parallel? I'll put the to-dos in the mermaid diagram flow‑wise so the agent knows how to proceed in order.
+Group items into:
+
+1. **Quick-fix now** (safe to implement immediately)
+2. **Deferred** (needs broader design or product decision)
+
+Build a dependency-aware plan for quick-fix items and output a mermaid flow diagram showing:
+
+- serial prerequisites
+- independent items that can run in parallel
 
 ### 3. Implement (PARALLEL)
 
-Spawn a pr-comment-resolver agent for each unresolved item in parallel.
+Spawn a `pr-comment-resolver` agent for each independent quick-fix item in parallel.
 
-So if there are 3 comments, it will spawn 3 pr-comment-resolver agents in parallel, like this:
+If there are 3 independent items, run:
 
 1. Task pr-comment-resolver(comment1)
 2. Task pr-comment-resolver(comment2)
@@ -33,3 +47,13 @@ Always run all in parallel subagents/Tasks for each issue item.
 
 - Commit changes
 - Push to remote
+
+### 5. Defer Remaining Items to td
+
+For deferred items, create `td` issues so they are tracked:
+
+- `td new --type task --priority P2 --title "..." --description "..."`
+
+Then hand off deferred tracked work to:
+
+- `/resolve_todo_parallel` for td issue execution
